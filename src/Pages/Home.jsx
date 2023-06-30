@@ -80,7 +80,7 @@ function Home() {
         dispatch(postData(obj)).then(() => {
             toast({
                 title: 'Order Placed Successfuly.',
-                // description: "Book Your Food 🥘",
+                description: "Refresh Page one's",
                 status: 'success',
                 duration: 4000,
                 isClosable: true,
