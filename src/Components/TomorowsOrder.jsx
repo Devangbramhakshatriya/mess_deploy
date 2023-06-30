@@ -26,6 +26,32 @@ function TomorowsOrder() {
     const todaysDate=`${y}-${m}-${d}`
     let or=order.filter((e)=>e.date==minDate)
 
+    // Get the current date
+var currentDate = new Date();
+
+// Get tomorrow's date
+var tomorrowDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+
+// Check if the year has changed
+if (tomorrowDate.getFullYear() > currentDate.getFullYear()) {
+  tomorrowDate = new Date(currentDate.getFullYear(), 0, 1); // Set to January 1st of the next year
+} else {
+  // Check if the month has changed
+  if (tomorrowDate.getMonth() > currentDate.getMonth()) {
+    tomorrowDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1); // Set to the 1st day of the next month
+  }
+}
+
+// Extract the individual components of tomorrow's date
+var year = tomorrowDate.getFullYear();
+var month = tomorrowDate.getMonth() + 1; // Month is zero-based, so we add 1
+var day = tomorrowDate.getDate();
+
+// Format the date as desired (e.g., "YYYY-MM-DD")
+var formattedDate = year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
+
+console.log(formattedDate);
+
     const handleDelete = (e) => {
 
         let time1 = ""
@@ -59,7 +85,7 @@ function TomorowsOrder() {
         }
     }
     const getTodaysOrder=()=>{
-        fetch(`https://mess-backend-wueq.onrender.com/orders/getorder?filter=${minDate}`, {
+        fetch(`https://mess-backend-wueq.onrender.com/orders/getorder?filter=${formattedDate}`, {
             method: 'GET',
             headers: {
                 Authorization: localStorage.getItem('user_token'),

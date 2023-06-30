@@ -73,7 +73,7 @@ function UserDetails() {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(() => fetchDetals())
+        }).then(() => fetchDetals(filterDate))
     }
     return (
         <Box>

@@ -40,18 +40,18 @@ function YesterdaysOrder() {
             <Box>
                 <Box display="flex" gap={["15px", "25px", "25px", "30px", "30px", "30px"]} m="auto" justifyContent="center">
                     <Box bg="green.100" borderRadius="20px" p={["15px", "20px", "20px", "25px", "25px", "25px"]} _hover={{ boxShadow: "md", mt: "-10px", transition: "0.1s" }}>
-                        <Text>Tomorrow's Orders</Text>
+                        <Text>Yesterday's Orders</Text>
                         <Text>{todaysOrder}</Text>
                         {/* <Link to="/admin/todaysorder"><Button>View</Button></Link> */}
                     </Box>
 
                     <Box bg="green.100" borderRadius="20px" p={["15px", "20px", "20px", "25px", "25px", "25px"]} _hover={{ boxShadow: "md", mt: "-10px", transition: "0.1s" }}>
-                        <Text>Tomorrow's Mornning Orders</Text>
+                        <Text>Yesterday's Mornning Orders</Text>
                         <Text>{todaysMornningOrders}</Text>
                     </Box>
 
                     <Box bg="green.100" borderRadius="20px" p={["15px", "20px", "20px", "25px", "25px", "25px"]} _hover={{ boxShadow: "md", mt: "-10px", transition: "0.1s" }}>
-                        <Text>Tomorrow's Evening Orders</Text>
+                        <Text>Yesterday's Evening Orders</Text>
                         <Text>{todaysEveningOrders}</Text>
                     </Box>
 
@@ -86,7 +86,7 @@ function YesterdaysOrder() {
                                                 el.orders.map((e) => (
                                                     e.time == "AM" ? <Tr>
                                                         <Td>{e.date}</Td>
-                                                        <Td>{e.time > "12" ? "PM" : "AM"}</Td>
+                                                        <Td>{e.time}</Td>
                                                         <Td>{e.quantity}</Td>
                                                     </Tr>
 
@@ -133,7 +133,7 @@ function YesterdaysOrder() {
                                                 el.orders.map((e) => (
                                                     e.time == "PM" ? <Tr>
                                                         <Td>{e.date}</Td>
-                                                        <Td>{e.time > "12" ? "PM" : "AM"}</Td>
+                                                        <Td>{e.time}</Td>
                                                         <Td>{e.quantity}</Td>
                                                     </Tr>
 

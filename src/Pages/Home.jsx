@@ -19,10 +19,10 @@ function Home() {
     const [quantity, setQuantity] = useState("")
     const toast = useToast()
     const dispatch = useDispatch()
-    const todaysDate= new Date().toISOString().split("T")[0];
+    const todaysDate = new Date().toISOString().split("T")[0];
     console.log(todaysDate)
     const date1 = new Date()
-    const hour=date1.getHours()
+    const hour = date1.getHours()
     console.log(hour)
     let d = date1.getDate()
     if (d < 10) {
@@ -39,8 +39,8 @@ function Home() {
     let y = date1.getFullYear()
     const minDate = `${y}-${m}-${d}`
     const maxDate = `${y}-${m}-${md}`
-    const filterData=`${y}-${m}`
-    const tomorrowsDate=`${y}-${m}-${md}`
+    const filterData = `${y}-${m}`
+    const tomorrowsDate = `${y}-${m}-${md}`
     let datePickerId = new Date().toISOString().split("T")[0];
     console.log(datePickerId)
     console.log(m)
@@ -87,41 +87,68 @@ function Home() {
                 position: "top"
             })
         })
-        .then(()=>dispatch(getData(filterData)))
+            .then(() => dispatch(getData(filterData)))
     }
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getData(filterData))
-    },[])
+    }, [])
+
+
+    // Get the current date
+    var currentDate = new Date();
+
+    // Get tomorrow's date
+    var tomorrowDate = new Date(currentDate.getTime() + 24 * 60 * 60 * 1000);
+
+    // Check if the year has changed
+    if (tomorrowDate.getFullYear() > currentDate.getFullYear()) {
+        tomorrowDate = new Date(currentDate.getFullYear(), 0, 1); // Set to January 1st of the next year
+    } else {
+        // Check if the month has changed
+        if (tomorrowDate.getMonth() > currentDate.getMonth()) {
+            tomorrowDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1); // Set to the 1st day of the next month
+        }
+    }
+
+    // Extract the individual components of tomorrow's date
+    var year = tomorrowDate.getFullYear();
+    var month = tomorrowDate.getMonth() + 1; // Month is zero-based, so we add 1
+    var day = tomorrowDate.getDate();
+
+    // Format the date as desired (e.g., "YYYY-MM-DD")
+    var formattedDate = year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
+
+    console.log(formattedDate);
     return (
         <Box>
-            <Navbar/>
-        <Box>
-            <Box w={["70%","50%","40%","40%","40%","40%"]} m="auto" mb="30px">
-            <form action="" onSubmit={handleSubmit} >
-                {/* <Input type="date" onChange={(e) => setDate(e.target.value)} name="date" min={minDate} max={maxDate} required={true} /> */}
-                <Select onChange={(e) => setDate(e.target.value)} required={true} >
-                    <option value="">Select Date</option>
-                    <option value={todaysDate}>Today ({todaysDate}) </option>
-                    <option value={tomorrowsDate}>Tomorrow ({tomorrowsDate})</option>
-                </Select>
-                {/* <Input type="time" onChange={(e) => setTime(e.target.value)} name="time" required={true} /> */}
-                <Select onChange={(e) => setTime(e.target.value)} required={true}>
-                    <option value="">Select Time</option>
-                    <option value="AM" disabled={date == todaysDate && hour >12? true:false}>Moring</option>
-                    <option value="PM">Evening</option>
-                </Select>
-                <Select onChange={(e) => setQuantity(e.target.value)} name="quantity" required={true}>
-                    <option value="">Select Quntity</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </Select>
-                <Input type="submit" bg="green.100"/>
-            </form>
+            <Navbar />
+            <Box>
+                <Box w={["70%", "50%", "40%", "40%", "40%", "40%"]} m="auto" mb="30px">
+                    <form action="" onSubmit={handleSubmit} >
+                        {/* <Input type="date" onChange={(e) => setDate(e.target.value)} name="date" min={minDate} max={maxDate} required={true} /> */}
+                        <Select onChange={(e) => setDate(e.target.value)} required={true} >
+                            <option value="">Select Date</option>
+                            <option value={todaysDate}>Today ({todaysDate}) </option>
+                            <option value={formattedDate}>Tomorrow ({formattedDate})</option>
+                        </Select>
+                        {/* <Input type="time" onChange={(e) => setTime(e.target.value)} name="time" required={true} /> */}
+                        <Select onChange={(e) => setTime(e.target.value)} required={true}>
+                            <option value="">Select Time</option>
+                            <option value="AM" disabled={date == todaysDate && hour > 12 ? true : false}>Moring</option>
+                            <option value="PM">Evening</option>
+                        </Select>
+                        <Select onChange={(e) => setQuantity(e.target.value)} name="quantity" required={true}>
+                            <option value="">Select Quntity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </Select>
+                        <Input type="submit" bg="green.100" />
+                    </form>
+                </Box>
+                <TodaysOrder />
+                <TomorowsOrder />
             </Box>
-            <TodaysOrder />
-            <TomorowsOrder/>
-        </Box>
         </Box>
     )
 }

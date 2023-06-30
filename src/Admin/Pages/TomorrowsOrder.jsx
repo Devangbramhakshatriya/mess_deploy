@@ -86,7 +86,7 @@ function TomorrowsOrder() {
                                             el.orders.map((e) => (
                                                 e.time == "AM"?  <Tr>
                                                 <Td>{e.date}</Td>
-                                                <Td>{e.time > "12" ? "PM" : "AM"}</Td>
+                                                <Td>{e.time}</Td>
                                                 <Td>{e.quantity}</Td>
                                             </Tr>
                                                 
@@ -133,7 +133,7 @@ function TomorrowsOrder() {
                                             el.orders.map((e) => (
                                                 e.time == "PM"?  <Tr>
                                                 <Td>{e.date}</Td>
-                                                <Td>{e.time > "12" ? "PM" : "AM"}</Td>
+                                                <Td>{e.time}</Td>
                                                 <Td>{e.quantity}</Td>
                                             </Tr>
                                                 
