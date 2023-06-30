@@ -116,7 +116,7 @@ function Profile() {
                                         </Tbody>
                                     </Table>
                                     :
-                                    "No Date"
+                                    "No Data"
                             }
                         </Box>
                     }
