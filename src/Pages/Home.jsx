@@ -1,9 +1,9 @@
-import { Box, Input, Select, useToast } from "@chakra-ui/react";
+import { Box, Button, Input, Select, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import TodaysOrder from "../Components/TodaysOrder";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getData, postData } from "../Redux/Order/action";
 import TomorowsOrder from "../Components/TomorowsOrder";
 let init = {
@@ -18,12 +18,14 @@ function Home() {
     const [time, setTime] = useState("")
     const [quantity, setQuantity] = useState("")
     const toast = useToast()
+    const {isLoading}=useSelector((store)=>store)
+    console.log(isLoading)
     const dispatch = useDispatch()
     const todaysDate = new Date().toISOString().split("T")[0];
-    console.log(todaysDate)
+ 
     const date1 = new Date()
     const hour = date1.getHours()
-    console.log(hour)
+  
     let d = date1.getDate()
     if (d < 10) {
         d = `0${d}`
@@ -42,14 +44,13 @@ function Home() {
     const filterData = `${y}-${m}`
     const tomorrowsDate = `${y}-${m}-${md}`
     let datePickerId = new Date().toISOString().split("T")[0];
-    console.log(datePickerId)
-    console.log(m)
+   
 
     let total = quantity * 50
     let obj = { date, time, quantity, total }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(obj)
+       
         // axios.post('http://localhost:4500/orders/addorder', {
         //     headers: {
         //         Authorization: localStorage.getItem('user_token'),
@@ -118,7 +119,7 @@ function Home() {
     // Format the date as desired (e.g., "YYYY-MM-DD")
     var formattedDate = year + '-' + month.toString().padStart(2, '0') + '-' + day.toString().padStart(2, '0');
 
-    console.log(formattedDate);
+   
     return (
         <Box>
             <Navbar />
@@ -143,7 +144,7 @@ function Home() {
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </Select>
-                        <Input type="submit" bg="green.100" />
+                        <Button isLoading={isLoading} loadingText="Submiting" type="submit" bg="green.100" >Submit</Button>
                     </form>
                 </Box>
                 <TodaysOrder />

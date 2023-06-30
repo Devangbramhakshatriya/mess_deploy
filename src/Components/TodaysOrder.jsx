@@ -4,6 +4,7 @@ import { getData } from "../Redux/Order/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Text, Image, Button, useToast } from "@chakra-ui/react"
 function TodaysOrder() {
+    const [isDeleteding,setIsDeleteding]=useState(false)
     const [data, setData] = useState([])
     const dispatch = useDispatch()
     const toast = useToast()
@@ -28,7 +29,7 @@ function TodaysOrder() {
     const handleDelete = (e) => {
         let time1 = ""
         if (e.time < "12") {
-            time1 = "10:00"
+            time1 = "09:00"
         } else if (e.time > "12") {
             time1 = "18:00"
         }
@@ -47,6 +48,7 @@ function TodaysOrder() {
                 position: "top"
             })
         } else {
+            setIsDeleteding(true)
             fetch(`https://mess-backend-wueq.onrender.com/orders/${e._id}`, {
                 method: 'DELETE',
                 headers: {
@@ -54,6 +56,8 @@ function TodaysOrder() {
                     Authorization: localStorage.getItem('user_token'),
                 }
             }).then(() => getTodaysOrder())
+            .then(()=>setIsDeleteding(false))
+            .catch(()=>setIsDeleteding(false))
         }
     }
     const getTodaysOrder=()=>{
@@ -92,7 +96,7 @@ function TodaysOrder() {
                                 <Text>Time:{e.time}</Text>
                             </Box>
                             <Box>
-                                <Button m="auto" onClick={() => handleDelete(e)}>Delete</Button>
+                                <Button isLoading={isDeleteding} loadingText="Deleteing" m="auto" onClick={() => handleDelete(e)}>Delete</Button>
                             </Box>
                         </Box>
                     ))

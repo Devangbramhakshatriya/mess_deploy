@@ -4,6 +4,7 @@ import { getData } from "../Redux/Order/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Text, Image, Button, useToast } from "@chakra-ui/react"
 function TomorowsOrder() {
+    const [isDeleteding,setIsDeleteding]=useState(false)
     const [data, setData] = useState([])
     const dispatch = useDispatch()
     const toast = useToast()
@@ -75,13 +76,17 @@ console.log(formattedDate);
                 position: "top"
             })
         } else {
+            setIsDeleteding(true)
             fetch(`https://mess-backend-wueq.onrender.com/orders/${e._id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: localStorage.getItem('user_token'),
                 }
-            }).then(() => getTodaysOrder())
+            })
+            .then(() => getTodaysOrder())
+            .then(()=>setIsDeleteding(false))
+            .catch(()=>setIsDeleteding(false))
         }
     }
     const getTodaysOrder=()=>{
@@ -120,7 +125,7 @@ console.log(formattedDate);
                                 <Text>Time:{e.time}</Text>
                             </Box>
                             <Box>
-                                <Button m="auto" onClick={() => handleDelete(e)}>Delete</Button>
+                                <Button  m="auto" isLoading={isDeleteding} loadingText="Deleteing" onClick={() => handleDelete(e)}>Delete</Button>
                             </Box>
                         </Box>
                     ))

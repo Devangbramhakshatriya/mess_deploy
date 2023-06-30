@@ -19,12 +19,14 @@ import {Navigate, Link as RouterLink, useNavigate} from "react-router-dom"
 function Login() {
     const [mobileNumber,setMobileNumber]=useState("")
     const [password,setPassword]=useState("")
+    const [isLoading,setIsLoading]=useState(false)
     const toast = useToast()
     const navigate=useNavigate()
     let obj={mobileNumber,password}
     const handleSubmit=async(e)=>{
         e.preventDefault()
         console.log(obj)
+        setIsLoading(true)
             const res=axios.post('https://mess-backend-wueq.onrender.com/users/login',obj)
         .then((res)=>{
             toast({
@@ -35,6 +37,7 @@ function Login() {
                 isClosable: true,
                 position:"top"
               })
+              setIsLoading(false)
               console.log(res.data.token)
               localStorage.setItem('user_token', res.data.token)
               navigate('/')
@@ -47,6 +50,7 @@ function Login() {
                 isClosable: true,
                 position:"top"
               })
+              setIsLoading(false)
         })
         // console.log(await res)
     }
@@ -88,6 +92,8 @@ function Login() {
                                 <Link color={'blue.400'}>Forgot password?</Link>
                             </Stack>
                             <Button
+                            isLoading={isLoading}
+                            loadingText="Signing"
                             type='submit'
                                 bg={'blue.400'}
                                 color={'white'}
