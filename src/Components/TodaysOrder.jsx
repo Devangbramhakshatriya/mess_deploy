@@ -28,20 +28,21 @@ function TodaysOrder() {
 
     const handleDelete = (e) => {
         let time1 = ""
-        if (e.time < "12") {
-            time1 = "09:00"
-        } else if (e.time > "12") {
-            time1 = "18:00"
+        if (e.time == "AM") {
+            time1 = "9"
+        } else if (e.time == "PM") {
+            time1 = "18"
         }
         console.log(time1)
         var d = new Date(); // for now
         let h = d.getHours(); // => 9
         let m = d.getMinutes(); // =>  30
-        let time = `${h}:${m}`
+        let time = `${h}`
+        console.log(time)
         if (time > time1) {
             toast({
                 title: "You can't delete order",
-                description: "Becaous order will be deliver in 2 hours ",
+                description: "Becouse order will be deliver in 2 hours ",
                 status: 'error',
                 duration: 5000,
                 isClosable: true,
@@ -82,7 +83,7 @@ function TodaysOrder() {
 
             :
 
-            data.length > 0 ? <Box><Text>Don't Worray Your Food Will Diliver On Time</Text>
+            data.length > 0 ? <Box><Text>Don't Warry Your Food Will Diliver On Time</Text>
                 <Image src="https://cdn.dribbble.com/users/2243442/screenshots/11362056/cooking-at-home.gif" w={["40%", "40%", "30%", "30%", "30%", "30%"]} m="auto" />
                 {
                     data.map((e) => (
@@ -92,6 +93,7 @@ function TodaysOrder() {
                             </Box>
                             <Box>
                                 <Text>Today's Order</Text>
+                                <Text>{e.date}</Text>
                                 <Text>Qunatity:{e.quantity}</Text>
                                 <Text>Time:{e.time}</Text>
                             </Box>

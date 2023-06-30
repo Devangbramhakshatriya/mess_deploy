@@ -121,6 +121,7 @@ console.log(formattedDate);
                             </Box>
                             <Box>
                                 <Text>Tomorow's Order</Text>
+                                <Text>{e.date}</Text>
                                 <Text>Qunatity:{e.quantity}</Text>
                                 <Text>Time:{e.time}</Text>
                             </Box>

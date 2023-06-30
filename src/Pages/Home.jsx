@@ -22,7 +22,19 @@ function Home() {
     console.log(isLoading)
     const dispatch = useDispatch()
     const todaysDate = new Date().toISOString().split("T")[0];
- 
+    var today = new Date();
+
+    // Get the current date
+    var day = today.getDate();
+  
+    // Get the current month (months are zero-based, so January is 0)
+    var month = today.getMonth() + 1;
+  
+    // Get the current year
+    var year = today.getFullYear();
+  
+    // Format the date as a string in the desired format (e.g., "YYYY-MM-DD")
+    var DDate = year + '-' + month + '-' + day;
     const date1 = new Date()
     const hour = date1.getHours()
   
@@ -129,7 +141,7 @@ function Home() {
                         {/* <Input type="date" onChange={(e) => setDate(e.target.value)} name="date" min={minDate} max={maxDate} required={true} /> */}
                         <Select onChange={(e) => setDate(e.target.value)} required={true} >
                             <option value="">Select Date</option>
-                            <option value={todaysDate}>Today ({todaysDate}) </option>
+                            <option value={minDate}>Today ({minDate}) </option>
                             <option value={formattedDate}>Tomorrow ({formattedDate})</option>
                         </Select>
                         {/* <Input type="time" onChange={(e) => setTime(e.target.value)} name="time" required={true} /> */}
