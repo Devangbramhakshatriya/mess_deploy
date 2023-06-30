@@ -71,7 +71,7 @@ function TodaysOrder() {
     console.log(data)
     useEffect(() => {
         dispatch(getData())
-        getTodaysOrder()
+        getTodaysOrder(minDate)
     }, [])
     return (
         <Box>{isLoading ? <Image src="https://cdn.dribbble.com/users/645440/screenshots/3266490/loader-2_food.gif" m="auto" />
