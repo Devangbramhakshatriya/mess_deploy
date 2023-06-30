@@ -53,7 +53,7 @@ function TodaysOrder() {
                     'Content-Type': 'application/json',
                     Authorization: localStorage.getItem('user_token'),
                 }
-            }).then(() => dispatch(getData()))
+            }).then(() => getTodaysOrder())
         }
     }
     const getTodaysOrder=()=>{
