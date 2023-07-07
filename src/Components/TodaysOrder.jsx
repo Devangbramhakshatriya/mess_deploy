@@ -31,7 +31,7 @@ function TodaysOrder() {
         if (e.time == "AM") {
             time1 = "9"
         } else if (e.time == "PM") {
-            time1 = "18"
+            time1 = "15"
         }
         console.log(time1)
         var d = new Date(); // for now
