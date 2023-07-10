@@ -34,7 +34,7 @@ export const getData = (obj) => async (dispatch) => {
     let y = date1.getFullYear()
     const minDate = `${y}-${m}-${d}`
     dispatch(orderRequest())
-    fetch(`https://mess-backend-wueq.onrender.com/orders/getorder?filter=${obj}`, {
+    fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/getorder?filter=${obj}`, {
         method: 'GET',
         headers: {
             Authorization: localStorage.getItem('user_token'),
@@ -48,7 +48,7 @@ export const getData = (obj) => async (dispatch) => {
         .catch(()=>dispatch(orderFail()))
 }
 export const postData = (obj) => async (dispatch) => {
-    return await fetch("https://mess-backend-wueq.onrender.com/orders/addorder", {
+    return await fetch("https://ruby-muddy-earthworm.cyclic.app/orders/addorder", {
         method: 'POST',
         headers: {
             Authorization: localStorage.getItem('user_token'),
