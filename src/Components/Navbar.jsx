@@ -1,4 +1,4 @@
-import { Box, Button, Text, useMediaQuery } from "@chakra-ui/react";
+import { Box, Button, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { SideDrawer } from "./SideDrawer";
 import { useEffect, useState } from "react";
@@ -33,10 +33,10 @@ function Navbar() {
         // }
             getUserName()
     },[])
-        
+        //bgGradient='linear(to-l, #7928CA, #FF0080)'
     return (
-        <Box bgGradient='linear(to-l, #7928CA, #FF0080)' display="flex" justifyContent="space-between" mb="20px">
-            <Text fontSize="18px" color="white" fontWeight="bold" display="flex" alignItems="center" ml="20px"><RouterLink to="/">{name}</RouterLink></Text>
+        <Box bg="white" zIndex="1" position="sticky" top="0" boxShadow="md" display="flex" justifyContent="space-between" mb="20px">
+            <Text fontSize="18px" color="white" fontWeight="bold" display="flex" alignItems="center" ml="20px"><RouterLink to="/"><Image src="Annapurna Mess logo.PNG" w="200px"/></RouterLink></Text>
             {
                 isLessthan550 ?  <Box display="flex" justifyContent="end" mr="20px"><SideDrawer/></Box>
                 :

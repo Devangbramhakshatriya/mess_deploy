@@ -1,4 +1,4 @@
-import { Box, Button, Input, Select, useToast } from "@chakra-ui/react";
+import { Box, Button, Image, Input, Select, Text, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
@@ -135,8 +135,12 @@ function Home() {
     return (
         <Box>
             <Navbar />
-            <Box>
-                <Box w={["70%", "50%", "40%", "40%", "40%", "40%"]} m="auto" mb="30px">
+            <Box minH="100vh">
+                <Box w={["70%", "50%", "40%", "40%", "40%", "40%"]} m="auto" mb="30px" p="15px" border="1px solid gray" borderRadius="20px">
+                    <Box display="flex" justifyContent="center" alignItems="center" mb="20px" boxShadow="0 2px 2px -2px gray" >
+                     <Text  fontFamily="cursive" color="blue.400" fontWeight="bold">Order Here </Text>
+                     <Image src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHg2bmYyeDZhYzN4MXEwanFsanJ5czU1YXd0MmQzOHJobGUxNmZuaSZlcD12MV9naWZzX3NlYXJjaCZjdD1z/jQcR8mdVmMd8FG0R6w/200w.gif" w="50px"/> 
+                     </Box>
                     <form action="" onSubmit={handleSubmit} >
                         {/* <Input type="date" onChange={(e) => setDate(e.target.value)} name="date" min={minDate} max={maxDate} required={true} /> */}
                         <Select onChange={(e) => setDate(e.target.value)} required={true} >
@@ -150,7 +154,7 @@ function Home() {
                             <option value="AM" disabled={date == todaysDate && hour > 12 ? true : false}>Moring</option>
                             <option value="PM">Evening</option>
                         </Select>
-                        <Select onChange={(e) => setQuantity(e.target.value)} name="quantity" required={true}>
+                        <Select onChange={(e) => setQuantity(e.target.value)} name="quantity" required={true} mb="10px">
                             <option value="">Select Quntity</option>
                             <option value="1">1</option>
                             <option value="2">2</option>

@@ -76,12 +76,12 @@ function Profile() {
     return (
         <Box>
             <Navbar />
-            <Box>
+            <Box minH="100vh">
                 <Box fontFamily="sans-serif">{user.firstName ?
-                    <Box display="flex" justifyContent="space-around">
-                        <Text>{user.firstName} {user.lastName}</Text>
-                        <Box display="flex" gap="5px">
-                            <Text>Deposite {user.diposite}</Text> <Text bg={user.dipositeStatus == "Pending" ? "red.300" : user.dipositeStatus == "Paid" ? "green.200" : user.dipositeStatus == "Refunded" ? "yellow.200" : ""}>{user.dipositeStatus}</Text>
+                    <Box  justifyContent="space-around">
+                        <Text fontFamily="-moz-initial" fontStyle="-moz-initial" fontWeight="bold">{user.firstName} {user.lastName}</Text>
+                        <Box display="flex" gap="5px"  justifyContent="end">
+                            <Text >Deposite {user.diposite}</Text> <Text bg={user.dipositeStatus == "Pending" ? "red.300" : user.dipositeStatus == "Paid" ? "green.200" : user.dipositeStatus == "Refunded" ? "yellow.200" : ""}>{user.dipositeStatus}</Text>
                         </Box>
                     </Box>
                     : "...Loading"}</Box>

@@ -37,7 +37,7 @@ function YesterdaysOrder() {
     return (
         <Box>
             <Navbar />
-            <Box>
+            <Box minH="100vh">
                 <Box display="flex" gap={["15px", "25px", "25px", "30px", "30px", "30px"]} m="auto" justifyContent="center">
                     <Box bg="green.100" borderRadius="20px" p={["15px", "20px", "20px", "25px", "25px", "25px"]} _hover={{ boxShadow: "md", mt: "-10px", transition: "0.1s" }}>
                         <Text>Yesterday's Orders</Text>

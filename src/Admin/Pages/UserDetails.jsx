@@ -80,7 +80,7 @@ function UserDetails() {
             <Navbar />
             {
                 user.diposite ?
-                    <Box>
+                    <Box minH="100vh">
                         <Box fontFamily="sans-serif" display="flex" justifyContent="space-around">
                             <Text>{user.firstName} {user.lastName}</Text>
                             <Box display="flex" gap="5px">

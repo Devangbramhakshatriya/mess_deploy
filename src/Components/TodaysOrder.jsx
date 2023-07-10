@@ -87,7 +87,7 @@ function TodaysOrder() {
                 <Image src="https://cdn.dribbble.com/users/2243442/screenshots/11362056/cooking-at-home.gif" w={["40%", "40%", "30%", "30%", "30%", "30%"]} m="auto" />
                 {
                     data.map((e) => (
-                        <Box display="flex" w={["90%","70%","70%","60%","60%","60%"]} bg="green.300" justifyContent="space-around" m="auto" mt="20px" alignItems="center" key={e._id}>
+                        <Box borderRadius="10px" display="flex" w={["90%","70%","70%","60%","60%","60%"]} bg="green.300" justifyContent="space-around" m="auto" mt="20px" alignItems="center" key={e._id}>
                             <Box w={["30%","40%","40%","50%","50%","50%"]}>
                                 <Image src="https://media4.giphy.com/media/gg8Q0J4HD2rFm5LTHe/giphy.gif" w={["60%","40%","40%","30%","30%","30%"]} />
                             </Box>

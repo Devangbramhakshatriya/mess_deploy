@@ -1,9 +1,12 @@
-const { Box, Text } = require("@chakra-ui/react");
+const { Box, Text, Image } = require("@chakra-ui/react");
 
 function Footer() {
     return (
-        <Box boxShadow="md" h={["35px", "35px", "40px", "40px", "40px", "40px"]} position="fixed" left="0" bottom="0" p="2px" bg="white">
-            <Text fontFamily="sans-serif" fontSize="12px">Node:- The application is under testing mode. It's better if you keep track of your records.</Text>
+        <Box  position="sticky" bottom="0" p="2px" bg="white"  boxShadow="0 -0.5px 1px 0 gray" >
+            <Box display="flex" justifyContent="space-around" alignItems="center">
+            <Text fontFamily="sans-serif" fontSize="12px">For Any Query Call On: 9168071225</Text>
+            <Image src="Mess Logo.PNG" w="40px"/>
+            </Box>
         </Box>
     )
 }

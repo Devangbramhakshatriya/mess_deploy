@@ -7,10 +7,14 @@ function Dashboard() {
     const [data, setData] = useState([])
     const [tomorrow, setTomorrow] = useState([])
     const [yesterday, setYesterday] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     const fetchtodaysorder = () => {
+        setIsLoading(true)
         fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/gettodaysorder`)
             .then((res) => res.json())
             .then((res) => setData(res))
+            .then(() => setIsLoading(false))
+            .catch(() => setIsLoading(false))
     }
     const fetchtomorrowsorder = () => {
         fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/gettomorrowsorder`)
@@ -67,7 +71,8 @@ function Dashboard() {
     return (
         <Box>
             <Navbar />
-            <Box>
+
+            <Box minH="100vh">
                 <Box display="flex" gap={["15px", "25px", "25px", "30px", "30px", "30px"]} m="auto" justifyContent="center">
                     <Box bg="green.100" borderRadius="20px" p={["15px", "20px", "20px", "25px", "25px", "25px"]} _hover={{ boxShadow: "md", mt: "-10px", transition: "0.1s" }}>
                         <Text>Yesterday's Orders</Text>
@@ -88,53 +93,57 @@ function Dashboard() {
                     </Box>
 
                 </Box>
-                <Box overflow="auto">
-                    {
-                        data.length > 0 ?
-                            <Table >
-                                <Thead>
-                                    <Tr>
-                                        <Th>Sr.No.</Th>
-                                        <Th>Name</Th>
-                                        <Th>Details</Th>
-                                        <Th>Contact</Th>
-                                    </Tr>
-                                </Thead>
-                                <Tbody>
-                                    {
-                                        data.map((el, i) => (
-                                            <Tr key={i}>
-                                                <Td>{i + 1}</Td>
-                                                <Td>{el.user.firstName} {el.user.lastName}</Td>
-                                                <Thead>
-                                                    <Tr>
-                                                        <Th>Date</Th>
-                                                        <Th>Time</Th>
-                                                        <Th>Qunatity</Th>
-                                                    </Tr>
-                                                </Thead>
-                                                <Tbody>
-                                                    {
-                                                        el.orders.map((e) => (
-                                                            <Tr>
-                                                                <Td>{e.date}</Td>
-                                                                <Td>{e.time}</Td>
-                                                                <Td>{e.quantity}</Td>
-                                                            </Tr>
-                                                        ))
-                                                    }
-                                                </Tbody>
-                                                <Td>{el.user.mobileNumber}</Td>
+                {
+                    isLoading ? "...Loading"
+                        :
+                        <Box overflow="auto">
+                            {
+                                data.length > 0 ?
+                                    <Table >
+                                        <Thead>
+                                            <Tr>
+                                                <Th>Sr.No.</Th>
+                                                <Th>Name</Th>
+                                                <Th>Details</Th>
+                                                <Th>Contact</Th>
                                             </Tr>
-                                        ))
-                                    }
-                                </Tbody>
-                            </Table>
-                            :
-                            "No Data"
-                    }
+                                        </Thead>
+                                        <Tbody>
+                                            {
+                                                data.map((el, i) => (
+                                                    <Tr key={i}>
+                                                        <Td>{i + 1}</Td>
+                                                        <Td>{el.user.firstName} {el.user.lastName}</Td>
+                                                        <Thead>
+                                                            <Tr>
+                                                                <Th>Date</Th>
+                                                                <Th>Time</Th>
+                                                                <Th>Qunatity</Th>
+                                                            </Tr>
+                                                        </Thead>
+                                                        <Tbody>
+                                                            {
+                                                                el.orders.map((e) => (
+                                                                    <Tr>
+                                                                        <Td>{e.date}</Td>
+                                                                        <Td>{e.time}</Td>
+                                                                        <Td>{e.quantity}</Td>
+                                                                    </Tr>
+                                                                ))
+                                                            }
+                                                        </Tbody>
+                                                        <Td>{el.user.mobileNumber}</Td>
+                                                    </Tr>
+                                                ))
+                                            }
+                                        </Tbody>
+                                    </Table>
+                                    :
+                                    "No Data"
+                            }
 
-                </Box>
+                        </Box>
+                }
             </Box>
         </Box>
     )
