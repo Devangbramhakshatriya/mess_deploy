@@ -20,7 +20,7 @@ function DepositeModel() {
     const toast=useToast()
     const {id}=useParams()
     const handleSubmit=()=>{
-      fetch(`https://mess-backend-wueq.onrender.com/users/updateuser/${id}`,{
+      fetch(`https://ruby-muddy-earthworm.cyclic.app/users/updateuser/${id}`,{
         method:'PATCH',
         headers:{
           'Content-Type': 'application/json'

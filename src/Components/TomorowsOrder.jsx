@@ -77,7 +77,7 @@ console.log(formattedDate);
             })
         } else {
             setIsDeleteding(true)
-            fetch(`https://mess-backend-wueq.onrender.com/orders/${e._id}`, {
+            fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/${e._id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ console.log(formattedDate);
         }
     }
     const getTodaysOrder=()=>{
-        fetch(`https://mess-backend-wueq.onrender.com/orders/getorder?filter=${formattedDate}`, {
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/getorder?filter=${formattedDate}`, {
             method: 'GET',
             headers: {
                 Authorization: localStorage.getItem('user_token'),

@@ -24,7 +24,7 @@ import {
       try {
         setLoading(true)
         let res = await fetch(
-          'https://mess-backend-wueq.onrender.com/admins/login',
+          'https://ruby-muddy-earthworm.cyclic.app/admins/login',
           {
             method: 'POST',
             headers: {

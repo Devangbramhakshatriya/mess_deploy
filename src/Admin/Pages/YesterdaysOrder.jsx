@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function YesterdaysOrder() {
     const [data, setData] = useState([])
     const fetchtodaysorder = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/getyesterdaysorder`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/getyesterdaysorder`)
             .then((res) => res.json())
             .then((res) => setData(res))
     }

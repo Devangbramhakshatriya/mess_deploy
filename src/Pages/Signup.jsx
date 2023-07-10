@@ -62,7 +62,7 @@ function Signup() {
             setIsLoading(false)
         } 
         else {
-            const res = axios.post('https://mess-backend-wueq.onrender.com/users/register', text)
+            const res = axios.post('https://ruby-muddy-earthworm.cyclic.app/users/register', text)
                 // .then((res)=>console.log("Login Success"))
                 // .then(()=>setText(init))
                 .catch((err) => console.log(err));

@@ -8,17 +8,17 @@ function Dashboard() {
     const [tomorrow, setTomorrow] = useState([])
     const [yesterday, setYesterday] = useState([])
     const fetchtodaysorder = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/gettodaysorder`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/gettodaysorder`)
             .then((res) => res.json())
             .then((res) => setData(res))
     }
     const fetchtomorrowsorder = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/gettomorrowsorder`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/gettomorrowsorder`)
             .then((res) => res.json())
             .then((res) => setTomorrow(res))
     }
     const fetchyesterdaysorder = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/getyesterdaysorder`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/getyesterdaysorder`)
             .then((res) => res.json())
             .then((res) => setYesterday(res))
     }

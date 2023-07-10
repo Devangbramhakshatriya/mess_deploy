@@ -45,13 +45,13 @@ function UserDetails() {
     }
 
     const fetchUsers = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/users/${id}`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/users/${id}`)
             .then((res) => res.json())
             .then((res) => setUser(res.user))
     }
     console.log(process.env.LINK)
     const fetchDetals = (date) => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/userorder/${id}?filter=${date}`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/userorder/${id}?filter=${date}`)
             .then((res) => res.json())
             .then((res) => setOrder(res))
     }
@@ -68,7 +68,7 @@ function UserDetails() {
     })
 
     const handleDelete = (id) => {
-        fetch(`https://mess-backend-wueq.onrender.com/orders/${id}`, {
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/orders/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

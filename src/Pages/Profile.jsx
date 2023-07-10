@@ -50,7 +50,7 @@ function Profile() {
     }
     console.log(data)
     const getUserName = () => {
-        fetch(`https://mess-backend-wueq.onrender.com/users/getuser`, {
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/users/getuser`, {
             method: 'GET',
             headers: {
                 Authorization: localStorage.getItem('user_token'),

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Users(){
     const [user,setUser]=useState([])
     const fetchUsers=()=>{
-        fetch(`https://mess-backend-wueq.onrender.com/users/allusers`)
+        fetch(`https://ruby-muddy-earthworm.cyclic.app/users/allusers`)
         .then((res)=>res.json())
         .then((res)=>setUser(res.users))
     }

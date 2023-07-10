@@ -27,7 +27,7 @@ function Login() {
         e.preventDefault()
         console.log(obj)
         setIsLoading(true)
-            const res=axios.post('https://mess-backend-wueq.onrender.com/users/login',obj)
+            const res=axios.post('https://ruby-muddy-earthworm.cyclic.app/users/login',obj)
         .then((res)=>{
             toast({
                 title: 'Login Success.',
